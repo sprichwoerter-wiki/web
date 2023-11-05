@@ -7,6 +7,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiUrl: process.env.NUXT_PUBLIC_API_URL || "http://localhost:8000/api",
+      cdnUrl: process.env.NUXT_PUBLIC_CDN_URL || "http://localhost:8000",
     },
   },
   googleFonts: {

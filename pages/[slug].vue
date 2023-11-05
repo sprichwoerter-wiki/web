@@ -2,6 +2,7 @@
 import type { Proverb } from "~/util/types"
 
 const route = useRoute()
+const { public: config } = useRuntimeConfig()
 
 const { data: proverb } = useApi<Proverb>(`/proverbs/${route.params.slug}`)
 
@@ -15,7 +16,7 @@ useSeoMeta({
 <template>
   <div v-if="proverb" class="prose">
     <h1>{{ proverb.name }}</h1>
-    <img v-if="proverb.coverUrl" :src="`http://localhost:8000/images/proverbs/${proverb.coverUrl}`" class="max-h-96 rounded-lg">
+    <img v-if="proverb.coverUrl" :src="`${config.cdnUrl}/images/proverbs/${proverb.coverUrl}`" class="max-h-96 rounded-lg">
     <h2>Erklärung</h2>
     <div v-html="proverb.explanation" />
     <h2 v-if="proverb.example">
